@@ -15,7 +15,7 @@ class App extends Component {
                 </header>
 
                 {MealDatabase.map(function (meal, index) {
-                    return <MealItem {...meal} />;
+                    return <MealItem key={index} {...meal} />;
                 })}
             </div>
       );

@@ -5,7 +5,7 @@ class MealItem extends Component {
     render() {
         return (
             <div className="meal-item">
-                <div class="name">{this.props.name}</div>
+                <div className="name">{this.props.name}</div>
                 <div className="nutrition-facts">
                     <p>Calories: {this.props.calories}</p>
                     <p>Protein: {this.props.protein}</p>
