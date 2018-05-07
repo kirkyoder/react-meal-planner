@@ -1,0 +1,12 @@
+.meal-item {
+    border: 2px solid red;
+    text-align: left;
+}
+
+.meal-item .name {
+    font-weight: bold;
+}
+
+.meal-item .nutrition-facts {
+    text-align: left;
+}
