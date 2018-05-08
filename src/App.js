@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import MealItem from './components/MealItem.js';
-import MealDatabase from './data/Meals.js';
+import MealPlanner from './components/MealPlanner.js';
 
 class App extends Component {
     render() {
@@ -14,9 +13,7 @@ class App extends Component {
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
 
-                {MealDatabase.map(function (meal, index) {
-                    return <MealItem key={index} {...meal} />;
-                })}
+                <MealPlanner />
             </div>
       );
     }

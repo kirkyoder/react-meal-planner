@@ -4,7 +4,7 @@ import '../styles/mealitem.css';
 class MealItem extends Component {
     render() {
         return (
-            <div className="meal-item">
+            <div className="meal-item" onClick={this.props.onClick}>
                 <div className="name">{this.props.name}</div>
                 <div className="nutrition-facts">
                     <p>Calories: {this.props.calories}</p>
