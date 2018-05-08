@@ -16,10 +16,10 @@ class MealPlanner extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(e, data) {
+    handleClick(e, meal) {
         this.setState(function(prevState, props) {
             return {
-                meals: prevState.meals.concat(data)
+                meals: prevState.meals.concat(meal)
             }
         });
     }
