@@ -1,39 +1,8 @@
 import React, { Component } from 'react';
 
-import MealItemModel from '../models/MealItemModel.js';
-
 class NutritionLog extends Component {
-    constructor(properties) {
-        super(properties)
-
-        this.state = {
-            mealItems: [
-                new MealItemModel({
-                    name: 'Mediterranean Turkey Burger',
-                    calories: 248,
-                    protein: 30,
-                    carbs: 6,
-                    fat: 12
-                })
-            ]
-        }
-    }
-
-    // addMealItem() {
-    //     let mealItem = new MealItemModel({
-    //         name: 'Lemon Chicken',
-    //         calories: 276,
-    //         protein: 32,
-    //         carbs: 1,
-    //         fat: 14
-    //     });
-
-    //     this.setState((prevState, props) => ({
-    //         mealItems: prevState.mealItems.push(mealItem)
-    //     }));
-    // }
-
     render() {
+        // todo: handling null "this.props.mealItems"
         return (
             <table>
                 <thead>
@@ -43,7 +12,7 @@ class NutritionLog extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.mealItems.map(function (meal, index) {
+                    {this.props.mealItems.map(function (meal, index) {
                         return (
                             <tr key={index}>
                                 <td>{meal.name}</td>
