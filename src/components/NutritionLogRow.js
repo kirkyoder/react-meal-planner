@@ -24,11 +24,16 @@ class NutritionLogRow extends Component {
             fat,
             onRemove,
             mealid,
+            style,
             ...passedOnProps
         } = this.props;
 
+        const rowStyle = Object.assign({
+            cursor: 'pointer'
+        }, style);
+
         return (
-            <TableRow {...passedOnProps} mealid={mealid} onRowClick={this.onLogRowClick}>
+            <TableRow {...passedOnProps} mealid={mealid} onRowClick={this.onLogRowClick} style={rowStyle}>
                 <TableRowColumn style={{ width: '50%' }}>{name}</TableRowColumn>
                 <TableRowColumn>
                     <DisplayNumber number={calories} />
