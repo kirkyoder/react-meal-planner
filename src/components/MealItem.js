@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import DisplayNumber from './DisplayNumber';
+
 import Card, { CardTitle, CardText, CardActions } from 'material-ui/Card';
 import { FlatButton, Subheader, ListItem } from 'material-ui';
 
@@ -28,7 +31,11 @@ class MealItem extends Component {
             <div>
                 {items.map(function(item, index) {
                     let separator = index === items.length - 1 ? '' : ', ';
-                    return <span key={index}>{item.name}: {item.value}{separator}</span>
+                    return (
+                        <span key={index}>
+                            {item.name}: <DisplayNumber number={item.value} />{separator}
+                        </span>
+                    )
                 })}
             </div>
         );

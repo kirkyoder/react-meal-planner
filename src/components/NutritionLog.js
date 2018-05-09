@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import NutritionLogRow from './NutritionLogRow.js';
-import NutritionLogSummaryRow from './NutritionLogSummaryRow.js';
+import NutritionLogRow from './NutritionLogRow';
+import NutritionLogSummaryRow from './NutritionLogSummaryRow';
 
 import { Table, TableHeader, TableBody, TableRow, TableHeaderColumn, TableFooter } from 'material-ui/Table';
 import { Subheader } from 'material-ui';

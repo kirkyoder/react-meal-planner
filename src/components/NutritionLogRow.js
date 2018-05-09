@@ -32,9 +32,15 @@ class NutritionLogRow extends Component {
                 <TableRowColumn>
                     <DisplayNumber number={calories} />
                 </TableRowColumn>
-                <TableRowColumn>{protein}</TableRowColumn>
-                <TableRowColumn>{carbs}</TableRowColumn>
-                <TableRowColumn>{fat}</TableRowColumn>
+                <TableRowColumn>
+                    <DisplayNumber number={protein} />
+                </TableRowColumn>
+                <TableRowColumn>
+                    <DisplayNumber number={carbs} />
+                </TableRowColumn>
+                <TableRowColumn>
+                    <DisplayNumber number={fat} />
+                </TableRowColumn>
             </TableRow>
         );
     }

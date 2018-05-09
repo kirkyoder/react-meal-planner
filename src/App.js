@@ -3,7 +3,7 @@ import './App.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import MealPlanner from './components/MealPlanner.js';
+import MealPlanner from './components/MealPlanner';
 
 class App extends Component {
     render() {

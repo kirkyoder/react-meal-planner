@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import MealDatabase from '../data/Meals.js';
+import MealDatabase from '../data/Meals';
 
-import MealItem from './MealItem.js';
-import NutritionLog from './NutritionLog.js';
+import MealItem from './MealItem';
+import NutritionLog from './NutritionLog';
 import { Subheader, List } from 'material-ui';
 
 var _mealPlannerEntryId = 0;

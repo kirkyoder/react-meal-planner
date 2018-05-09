@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import NutritionLogRow from './NutritionLogRow.js';
+import NutritionLogRow from './NutritionLogRow';
 
 class NutritionLogSummaryRow extends Component {
     updateSummaries(meals) {
