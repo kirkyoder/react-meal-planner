@@ -38,11 +38,11 @@ class NutritionLog extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.mealItems.map(function (meal, index) {
+                        {this.props.mealItems.map(function (meal) {
                             let mealItem = meal.meal;
                             return (
                                 <NutritionLogRow
-                                    key={index}
+                                    key={meal.id}
                                     mealid={meal.id}
                                     name={mealItem.name}
                                     calories={mealItem.calories}
