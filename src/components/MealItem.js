@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card, { CardTitle, CardHeader, CardText, CardActions } from 'material-ui/Card';
+import Card, { CardTitle, CardText, CardActions } from 'material-ui/Card';
 import { FlatButton } from 'material-ui';
 
 class MealItem extends Component {

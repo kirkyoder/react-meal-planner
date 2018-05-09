@@ -1,15 +1,38 @@
 import React, { Component } from 'react';
 
+import { TableRow, TableRowColumn } from 'material-ui/Table';
+
 class NutritionLogRow extends Component {
+    constructor(props) {
+        super(props);
+
+        this.onLogRowClick = this.onLogRowClick.bind(this);
+    }
+
+    onLogRowClick() {
+        this.props.onRemove(this.props.mealid)
+    }
+
     render() {
+        const {
+            name,
+            calories,
+            protein,
+            carbs,
+            fat,
+            onRemove,
+            mealid,
+            ...passedOnProps
+        } = this.props;
+
         return (
-            <tr mealid={this.props.mealid} onClick={this.props.onRemove}>
-                <td>{this.props.name}</td>
-                <td>{this.props.calories}</td>
-                <td>{this.props.protein}</td>
-                <td>{this.props.carbs}</td>
-                <td>{this.props.fat}</td>
-            </tr>
+            <TableRow {...passedOnProps} mealid={mealid} onRowClick={this.onLogRowClick}>
+                <TableRowColumn>{name}</TableRowColumn>
+                <TableRowColumn>{calories}</TableRowColumn>
+                <TableRowColumn>{protein}</TableRowColumn>
+                <TableRowColumn>{carbs}</TableRowColumn>
+                <TableRowColumn>{fat}</TableRowColumn>
+            </TableRow>
         );
     }
 }

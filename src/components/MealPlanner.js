@@ -12,7 +12,11 @@ class MealPlanner extends Component {
         super(props);
 
         this.state = {
-            meals: []
+            meals: [
+                { id: _mealPlannerEntryId++, meal: MealDatabase[0] },
+                { id: _mealPlannerEntryId++, meal: MealDatabase[0] },
+                { id: _mealPlannerEntryId++, meal: MealDatabase[0] }
+            ]
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -33,7 +37,7 @@ class MealPlanner extends Component {
     handleRemove(index) {
         this.setState({
             meals: this.state.meals.filter(function(meal) {
-                return meal.id.toString() !== index;
+                return meal.id !== index;
             })
         })
     }

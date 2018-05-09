@@ -34,7 +34,11 @@ class NutritionLogSummaryRow extends Component {
                 calories={summaries.calories}
                 protein={summaries.protein}
                 carbs={summaries.carbs}
-                fat={summaries.fat} />
+                fat={summaries.fat}
+                style={{
+                    backgroundColor: '#eee',
+                    fontWeight: 'bold'
+                }} />
         );
     }
 }
