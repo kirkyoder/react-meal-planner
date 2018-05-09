@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 
 class NutritionLog extends Component {
+    constructor(props) {
+        super(props);
+
+        this.onRemove = this.onRemove.bind(this);
+    }
+
+    onRemove(e) {
+        this.props.onClick(e);
+    }
+
     calculateCalories() {
         let sum = 0;
-        this.props.mealItems.forEach(element => {
-            sum += element.calories;
+        this.props.mealItems.forEach(mealItem => {
+            sum += mealItem.meal.calories;
         });
 
         return sum;
@@ -23,13 +33,14 @@ class NutritionLog extends Component {
                     </thead>
                     <tbody>
                         {this.props.mealItems.map(function (meal, index) {
+                            let mealItem = meal.meal;
                             return (
-                                <tr key={index}>
-                                    <td>{meal.name}</td>
-                                    <td>{meal.calories}</td>
+                                <tr key={index} mealid={meal.id} onClick={this.onRemove}>
+                                    <td>{mealItem.name}</td>
+                                    <td>{mealItem.calories}</td>
                                 </tr>
                             );
-                        })}
+                        }, this)}
                     </tbody>
                 </table>
                 <p>Total Calories: {this.calculateCalories()}</p>
