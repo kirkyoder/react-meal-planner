@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import DisplayNumber from './DisplayNumber';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
 
 class NutritionLogRow extends Component {
@@ -27,8 +28,10 @@ class NutritionLogRow extends Component {
 
         return (
             <TableRow {...passedOnProps} mealid={mealid} onRowClick={this.onLogRowClick}>
-                <TableRowColumn>{name}</TableRowColumn>
-                <TableRowColumn>{calories}</TableRowColumn>
+                <TableRowColumn style={{ width: '50%' }}>{name}</TableRowColumn>
+                <TableRowColumn>
+                    <DisplayNumber number={calories} />
+                </TableRowColumn>
                 <TableRowColumn>{protein}</TableRowColumn>
                 <TableRowColumn>{carbs}</TableRowColumn>
                 <TableRowColumn>{fat}</TableRowColumn>

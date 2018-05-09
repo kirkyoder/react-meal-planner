@@ -4,6 +4,7 @@ import MealDatabase from '../data/Meals.js';
 
 import MealItem from './MealItem.js';
 import NutritionLog from './NutritionLog.js';
+import { Subheader, List } from 'material-ui';
 
 var _mealPlannerEntryId = 0;
 
@@ -14,8 +15,7 @@ class MealPlanner extends Component {
         this.state = {
             meals: [
                 { id: _mealPlannerEntryId++, meal: MealDatabase[0] },
-                { id: _mealPlannerEntryId++, meal: MealDatabase[0] },
-                { id: _mealPlannerEntryId++, meal: MealDatabase[0] }
+                { id: _mealPlannerEntryId++, meal: MealDatabase[1] }
             ]
         }
 
@@ -45,10 +45,13 @@ class MealPlanner extends Component {
     render() {
         return (
             <div>
-                <div style={{ width: '50%', float: 'left' }}>
-                    {MealDatabase.map(function (meal, index) {
-                        return <MealItem key={index} model={meal} onClick={this.handleClick} />;
-                    }, this)}
+                <div>
+                    <List>
+                        <Subheader>Meals</Subheader>
+                        {MealDatabase.map(function (meal, index) {
+                            return <MealItem key={index} model={meal} onClick={this.handleClick} />;
+                        }, this)}
+                    </List>
                 </div>
 
                 <NutritionLog mealItems={this.state.meals} onClick={this.handleRemove} />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Card, { CardTitle, CardText, CardActions } from 'material-ui/Card';
-import { FlatButton } from 'material-ui';
+import { FlatButton, Subheader, ListItem } from 'material-ui';
 
 class MealItem extends Component {
     constructor(props) {
@@ -18,19 +18,26 @@ class MealItem extends Component {
     }
 
     render() {
+        const items = [
+            { name: 'Calories', value: this.state.model.calories },
+            { name: 'Protein', value: this.state.model.protein },
+            { name: 'Carbs', value: this.state.model.carbs },
+            { name: 'Fat', value: this.state.model.fat },
+        ];
+        const text = (
+            <div>
+                {items.map(function(item, index) {
+                    let separator = index === items.length - 1 ? '' : ', ';
+                    return <span key={index}>{item.name}: {item.value}{separator}</span>
+                })}
+            </div>
+        );
+
         return (
-            <Card>
-                <CardTitle title={this.state.model.name} />
-                <CardText>
-                    <div>Calories: {this.state.model.calories}</div>
-                    <div>Protein: {this.state.model.protein}</div>
-                    <div>Carbs: {this.state.model.carbs}</div>
-                    <div>Fat: {this.state.model.fat}</div>
-                </CardText>
-                <CardActions>
-                    <FlatButton label="Add to Meal Plan" secondary={true} onClick={this.handleClick} />
-                </CardActions>
-            </Card>
+            <ListItem
+                primaryText={this.state.model.name}
+                onClick={this.handleClick}
+                secondaryText={text} />
         );
     }
 }
