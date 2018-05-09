@@ -45,7 +45,7 @@ class MealPlanner extends Component {
     render() {
         return (
             <div>
-                <div>
+                <div style={{ width: '50%', float: 'left' }}>
                     {MealDatabase.map(function (meal, index) {
                         return <MealItem key={index} model={meal} onClick={this.handleClick} />;
                     }, this)}
