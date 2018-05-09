@@ -1,4 +1,4 @@
-import MealItemModel from '../models/MealItemModel'
+import MealItemModel from '../models/MealItemModel';
 
 export default [
     new MealItemModel({

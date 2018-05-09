@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import DisplayNumber from './DisplayNumber';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
+
+import DisplayNumber from './DisplayNumber';
 
 class NutritionLogRow extends Component {
     constructor(props) {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import MealDatabase from '../data/Meals';
+import { Subheader, List } from 'material-ui';
 
+import MealDatabase from '../data/Meals';
 import MealItem from './MealItem';
 import NutritionLog from './NutritionLog';
-import { Subheader, List } from 'material-ui';
 
 var _mealPlannerEntryId = 0;
 
