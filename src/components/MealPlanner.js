@@ -5,11 +5,11 @@ import MealDatabase from '../data/Meals.js';
 import MealItem from './MealItem.js';
 import NutritionLog from './NutritionLog.js';
 
+var _mealId = 0;
+
 class MealPlanner extends Component {
     constructor(props) {
         super(props);
-
-        this._mealId = 0;
 
         this.state = {
             meals: []
@@ -23,16 +23,14 @@ class MealPlanner extends Component {
         this.setState(function(prevState, props) {
             return {
                 meals: prevState.meals.concat({
-                    id: this._mealId++,
+                    id: _mealId++,
                     meal: meal
                 })
             }
         });
     }
 
-    handleRemove(e) {
-        let index = e.currentTarget.getAttribute('mealid');
-
+    handleRemove(index) {
         this.setState({
             meals: this.state.meals.filter(function(meal) {
                 return meal.id.toString() !== index;

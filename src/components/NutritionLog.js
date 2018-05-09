@@ -1,49 +1,62 @@
 import React, { Component } from 'react';
+import '../styles/nutrition-log.css';
+
+import NutritionLogRow from './NutritionLogRow.js';
+import NutritionLogSummaryRow from './NutritionLogSummaryRow.js';
 
 class NutritionLog extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            totalCalories: 0,
+            totalProtein: 0,
+            totalCarbs: 0,
+            totalFat: 0
+        }
+
         this.onRemove = this.onRemove.bind(this);
     }
 
     onRemove(e) {
-        this.props.onClick(e);
-    }
-
-    calculateCalories() {
-        let sum = 0;
-        this.props.mealItems.forEach(mealItem => {
-            sum += mealItem.meal.calories;
-        });
-
-        return sum;
+        let targetId = e.currentTarget.getAttribute('mealid');
+        this.props.onClick(targetId);
     }
 
     render() {
         // todo: handling null "this.props.mealItems"
         return (
-            <div>
+            <div className="nutrition-log">
                 <table>
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Calories</th>
+                            <th>Protein</th>
+                            <th>Carbs</th>
+                            <th>Fat</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.props.mealItems.map(function (meal, index) {
                             let mealItem = meal.meal;
                             return (
-                                <tr key={index} mealid={meal.id} onClick={this.onRemove}>
-                                    <td>{mealItem.name}</td>
-                                    <td>{mealItem.calories}</td>
-                                </tr>
+                                <NutritionLogRow
+                                    key={index}
+                                    mealid={meal.id}
+                                    name={mealItem.name}
+                                    calories={mealItem.calories}
+                                    protein={mealItem.protein}
+                                    carbs={mealItem.carbs}
+                                    fat={mealItem.fat}
+                                    onRemove={this.onRemove} />
                             );
                         }, this)}
                     </tbody>
+                    <tfoot>
+                        <NutritionLogSummaryRow meals={this.props.mealItems} />
+                    </tfoot>
                 </table>
-                <p>Total Calories: {this.calculateCalories()}</p>
             </div>
         );
     }
