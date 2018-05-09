@@ -5,7 +5,7 @@ import MealDatabase from '../data/Meals.js';
 import MealItem from './MealItem.js';
 import NutritionLog from './NutritionLog.js';
 
-var _mealId = 0;
+var _mealPlannerEntryId = 0;
 
 class MealPlanner extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class MealPlanner extends Component {
         this.setState(function(prevState, props) {
             return {
                 meals: prevState.meals.concat({
-                    id: _mealId++,
+                    id: _mealPlannerEntryId++,
                     meal: meal
                 })
             }
