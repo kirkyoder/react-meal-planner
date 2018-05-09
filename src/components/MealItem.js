@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../styles/mealitem.css';
+import Card, { CardTitle, CardHeader, CardText, CardActions } from 'material-ui/Card';
+import { FlatButton } from 'material-ui';
 
 class MealItem extends Component {
     constructor(props) {
@@ -18,15 +19,18 @@ class MealItem extends Component {
 
     render() {
         return (
-            <div className="meal-item" onClick={this.handleClick}>
-                <div className="name">{this.state.model.name}</div>
-                <div className="nutrition-facts">
-                    <p>Calories: {this.state.model.calories}</p>
-                    <p>Protein: {this.state.model.protein}</p>
-                    <p>Carbs: {this.state.model.carbs}</p>
-                    <p>Fat: {this.state.model.fat}</p>
-                </div>
-            </div>
+            <Card>
+                <CardTitle title={this.state.model.name} />
+                <CardText>
+                    <div>Calories: {this.state.model.calories}</div>
+                    <div>Protein: {this.state.model.protein}</div>
+                    <div>Carbs: {this.state.model.carbs}</div>
+                    <div>Fat: {this.state.model.fat}</div>
+                </CardText>
+                <CardActions>
+                    <FlatButton label="Add to Meal Plan" secondary={true} onClick={this.handleClick} />
+                </CardActions>
+            </Card>
         );
     }
 }
