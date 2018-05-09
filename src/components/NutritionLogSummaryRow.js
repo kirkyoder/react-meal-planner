@@ -37,7 +37,8 @@ class NutritionLogSummaryRow extends Component {
                 fat={summaries.fat}
                 style={{
                     backgroundColor: '#eee',
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    cursor: 'normal'
                 }} />
         );
     }

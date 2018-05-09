@@ -12,6 +12,10 @@ class NutritionLogRow extends Component {
     }
 
     onLogRowClick() {
+        if (!this.props.onRemove) {
+            return;
+        }
+
         this.props.onRemove(this.props.mealid)
     }
 
