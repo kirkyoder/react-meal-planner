@@ -14,8 +14,6 @@ class DisplayNumber extends Component {
             return '0%';
         }
 
-        console.log(number);
-
         return (number * 100).toFixed(precision) + '%';
     }
 
