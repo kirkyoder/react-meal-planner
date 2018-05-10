@@ -34,9 +34,9 @@ class NutritionLog extends Component {
                         <TableRow>
                             <TableHeaderColumn style={{ width: '40%' }}>Name</TableHeaderColumn>
                             <TableHeaderColumn>Calories</TableHeaderColumn>
-                            <TableHeaderColumn>Protein</TableHeaderColumn>
-                            <TableHeaderColumn>Carbs</TableHeaderColumn>
-                            <TableHeaderColumn>Fat</TableHeaderColumn>
+                            <TableHeaderColumn>Protein (g)</TableHeaderColumn>
+                            <TableHeaderColumn>Carbs (g)</TableHeaderColumn>
+                            <TableHeaderColumn>Fat (g)</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody showRowHover={true}>
