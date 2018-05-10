@@ -1,0 +1,15 @@
+.outer-container {
+    width: 100%;
+}
+
+.meals-list-container {
+    width: 30%;
+    float: left;
+    /* height: 100vh;
+    overflow: scroll; */
+}
+
+.nutrition-log-container{
+    /* height: 100vh;
+    overflow: scroll; */
+}

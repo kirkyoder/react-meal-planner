@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class DisplayNumber extends Component {
     localizeNumber(number) {
-        if (!number) {
+        if (number === null || number === undefined) {
             return '';
         }
 

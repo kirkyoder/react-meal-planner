@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import '../styles/meal-planner.css';
+
 import { Subheader, List } from 'material-ui';
 
 import MealDatabase from '../data/Meals';
@@ -44,8 +46,8 @@ class MealPlanner extends Component {
 
     render() {
         return (
-            <div>
-                <div>
+            <div className="outer-container">
+                <div className="meals-list-container">
                     <List>
                         <Subheader>Meals</Subheader>
                         {MealDatabase.map(function (meal, index) {
@@ -54,7 +56,9 @@ class MealPlanner extends Component {
                     </List>
                 </div>
 
-                <NutritionLog mealItems={this.state.meals} onClick={this.handleRemove} />
+                <div className="nutrition-log-container">
+                    <NutritionLog mealItems={this.state.meals} onClick={this.handleRemove} />
+                </div>
             </div>
         );
     }
