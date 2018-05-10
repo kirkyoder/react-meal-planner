@@ -9,8 +9,25 @@ class DisplayNumber extends Component {
         return number.toLocaleString();
     }
 
+    asPercentage(number, precision = 0) {
+        if (number === null || number === undefined || isNaN(number)) {
+            return '0%';
+        }
+
+        console.log(number);
+
+        return (number * 100).toFixed(precision) + '%';
+    }
+
     render() {
-        return <span>{this.localizeNumber(this.props.number)}</span>;
+        let value = '';
+        if (this.props.asPercentage === true) {
+            value = this.asPercentage(this.props.number);
+        } else {
+            value = this.localizeNumber(this.props.number);
+        }
+
+        return <span style={this.props.style}>{value}</span>;
     }
 }
 

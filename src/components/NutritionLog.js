@@ -32,7 +32,7 @@ class NutritionLog extends Component {
                 <Table selectable={false}>
                     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow>
-                            <TableHeaderColumn style={{ width: '50%' }}>Name</TableHeaderColumn>
+                            <TableHeaderColumn style={{ width: '40%' }}>Name</TableHeaderColumn>
                             <TableHeaderColumn>Calories</TableHeaderColumn>
                             <TableHeaderColumn>Protein</TableHeaderColumn>
                             <TableHeaderColumn>Carbs</TableHeaderColumn>

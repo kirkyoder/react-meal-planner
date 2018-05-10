@@ -15,10 +15,7 @@ class MealPlanner extends Component {
         super(props);
 
         this.state = {
-            meals: [
-                { id: _mealPlannerEntryId++, meal: MealDatabase[0] },
-                { id: _mealPlannerEntryId++, meal: MealDatabase[1] }
-            ]
+            meals: []
         }
 
         this.handleClick = this.handleClick.bind(this);

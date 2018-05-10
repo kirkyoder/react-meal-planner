@@ -9,7 +9,7 @@ const meals = [
     ['Lemon Chicken', 276, 32, 1, 14],
     ['Latte', 136, 7, 11, 7],
     ['Bagel', 245, 10, 48, 1.5],
-    ['Eggs', 180, 12, 2, 14],
+    ['Scrambled Eggs (2)', 180, 12, 2, 14],
     ['Almonds (12)', 82, 3, 3, 7],
     ['Babybel Cheese', 70, 5, 0, 6]
 ];
