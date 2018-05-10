@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import DisplayNumber from './DisplayNumber';
 
-import Card, { CardTitle, CardText, CardActions } from 'material-ui/Card';
-import { FlatButton, Subheader, ListItem } from 'material-ui';
+import { ListItem } from 'material-ui';
 
 class MealItem extends Component {
     constructor(props) {

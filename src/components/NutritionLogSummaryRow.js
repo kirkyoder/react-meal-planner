@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
 
 import DisplayNumber from './DisplayNumber';
-import NutritionLogRow from './NutritionLogRow';
 
 class NutritionLogSummaryRow extends Component {
     updateSummaries(meals) {
