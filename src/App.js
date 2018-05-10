@@ -3,6 +3,7 @@ import './App.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import MealDatabase from './data/Meals';
 import MealPlanner from './components/MealPlanner';
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
             <MuiThemeProvider>
                 <div className="App">
                     <h1>Meal Planner</h1>
-                    <MealPlanner />
+                    <MealPlanner meals={MealDatabase.getMealItems()} />
                 </div>
             </MuiThemeProvider>
       );
