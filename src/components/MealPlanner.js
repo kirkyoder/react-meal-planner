@@ -3,10 +3,13 @@ import React, { Component } from 'react';
 import '../styles/meal-planner.css';
 
 import { Subheader, List } from 'material-ui';
+import RaisedButton from 'material-ui/RaisedButton';
 
-import MealDatabase from '../data/Meals';
-import MealItem from './MealItem';
+import MealItemEnumerator from './MealItemEnumerator';
+import MealItemModel from '../models/MealItemModel';
 import NutritionLog from './NutritionLog';
+
+import MealItemMaker from './MealItemMaker';
 
 var _mealPlannerEntryId = 0;
 
@@ -15,17 +18,24 @@ class MealPlanner extends Component {
         super(props);
 
         this.state = {
-            meals: []
+            availableMeals: props.meals || [],
+            plannedMeals: [],
+            mealItemMakerOpen: true
         }
 
-        this.handleClick = this.handleClick.bind(this);
-        this.handleRemove = this.handleRemove.bind(this);
+        this.handleMealAdded = this.handleMealAdded.bind(this);
+        this.handleMealRemoved = this.handleMealRemoved.bind(this);
+
+        this.openMealItemMaker = this.openMealItemMaker.bind(this);
+        this.onMealItemMakerClosed = this.onMealItemMakerClosed.bind(this);
+
+        this._addMealItem = this._addMealItem.bind(this);
     }
 
-    handleClick(e, meal) {
+    handleMealAdded(e, meal) {
         this.setState(function(prevState, props) {
             return {
-                meals: prevState.meals.concat({
+                plannedMeals: prevState.plannedMeals.concat({
                     id: _mealPlannerEntryId++,
                     meal: meal
                 })
@@ -33,28 +43,64 @@ class MealPlanner extends Component {
         });
     }
 
-    handleRemove(index) {
+    handleMealRemoved(index) {
         this.setState({
-            meals: this.state.meals.filter(function(meal) {
+            plannedMeals: this.state.plannedMeals.filter(function(meal) {
                 return meal.id !== index;
             })
-        })
+        });
+    }
+
+    _addMealItem(mealItem) {
+        this.setState(function(prevState, props) {
+            return {
+                availableMeals: prevState.availableMeals.concat(mealItem)
+            }
+        });
+    }
+
+    openMealItemMaker() {
+        this.setState({ mealItemMakerOpen: true });
+    }
+
+    onMealItemMakerClosed(data) {
+        if (data) {
+            this._addMealItem(new MealItemModel({
+                name: data.name,
+                calories: data.calories,
+                protein: data.protein,
+                carbs: data.carbs,
+                fat: data.fat
+            }));
+        }
+
+        // close the meal item maker
+        this.setState({ mealItemMakerOpen: false });
     }
 
     render() {
         return (
             <div className="outer-container">
+                <RaisedButton
+                    label="New Meal Item"
+                    primary={true}
+                    onClick={this.openMealItemMaker} />
+
+                <MealItemMaker
+                    open={this.state.mealItemMakerOpen}
+                    onClose={this.onMealItemMakerClosed} />
+
                 <div className="meals-list-container">
                     <List>
                         <Subheader>Meals</Subheader>
-                        {MealDatabase.map(function (meal, index) {
-                            return <MealItem key={index} model={meal} onClick={this.handleClick} />;
-                        }, this)}
+                        <MealItemEnumerator
+                            meals={this.state.availableMeals}
+                            onItemClicked={this.handleMealAdded} />
                     </List>
                 </div>
 
                 <div className="nutrition-log-container">
-                    <NutritionLog mealItems={this.state.meals} onClick={this.handleRemove} />
+                    <NutritionLog mealItems={this.state.plannedMeals} onClick={this.handleMealRemoved} />
                 </div>
             </div>
         );

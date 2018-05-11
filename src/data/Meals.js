@@ -1,16 +1,16 @@
 import MealItemModel from '../models/MealItemModel';
 
 const meals = [
-    ['Mediterranean Turkey Burger', 248, 30, 6, 12],
-    ['Rx Bar', 210, 12, 22, 8],
-    ['Total 2% Yogurt', 140, 20, 6, 4],
-    ['Orgain Protein', 150, 21, 15, 4],
-    ['Casein Protein', 120, 24, 3, 1],
-    ['Lemon Chicken', 276, 32, 1, 14],
-    ['Latte', 136, 7, 11, 7],
-    ['Bagel', 245, 10, 48, 1.5],
-    ['Scrambled Eggs (2)', 180, 12, 2, 14],
-    ['Almonds (12)', 82, 3, 3, 7],
+    // ['Mediterranean Turkey Burger', 248, 30, 6, 12],
+    // ['Rx Bar', 210, 12, 22, 8],
+    // ['Total 2% Yogurt', 140, 20, 6, 4],
+    // ['Orgain Protein', 150, 21, 15, 4],
+    // ['Casein Protein', 120, 24, 3, 1],
+    // ['Lemon Chicken', 276, 32, 1, 14],
+    // ['Latte', 136, 7, 11, 7],
+    // ['Bagel', 245, 10, 48, 1.5],
+    // ['Scrambled Eggs (2)', 180, 12, 2, 14],
+    // ['Almonds (12)', 82, 3, 3, 7],
     ['Babybel Cheese', 70, 5, 0, 6]
 ];
 
@@ -31,4 +31,8 @@ meals
         }));
     });
 
-export default mealItems;
+export function getMealItems() {
+    return mealItems;
+}
+
+export default { getMealItems };
