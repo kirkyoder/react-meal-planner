@@ -42,7 +42,7 @@ class MealItemMaker extends Component {
         this.setState({ errors: {} });
     }
 
-    handleClose = (e) => {
+    handleSubmit = (e) => {
         const isValid = this.handleValidation();
         if (!isValid) {
             return;
@@ -102,7 +102,7 @@ class MealItemMaker extends Component {
             <FlatButton
                 label="Submit"
                 primary={true}
-                onClick={this.handleClose} />
+                onClick={this.handleSubmit} />
         ];
 
         const fields = [
