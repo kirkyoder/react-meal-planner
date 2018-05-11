@@ -7,6 +7,9 @@ import List from 'material-ui/List';
 import MenuItem from 'material-ui/MenuItem';
 import NavigationMenuIcon from 'material-ui/svg-icons/navigation/menu';
 import NavigationMoreIcon from 'material-ui/svg-icons/navigation/more-vert';
+import ReaderIcon from 'material-ui/svg-icons/action/chrome-reader-mode';
+import RestaurantIcon from 'material-ui/svg-icons/maps/restaurant';
+import AddIcon from 'material-ui/svg-icons/content/add-box';
 import Subheader from 'material-ui/Subheader';
 import { white } from 'material-ui/styles/colors';
 
@@ -121,8 +124,11 @@ class MealPlanner extends Component {
         );
 
         const menu = (
-            <IconMenu iconButtonElement={<IconButton><NavigationMoreIcon color={white} /></IconButton>}>
-                <MenuItem primaryText="Add Meal Item" onClick={this.openMealItemMaker} />
+            <IconMenu
+                iconButtonElement={<IconButton><NavigationMoreIcon color={white} /></IconButton>}
+                anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+                targetOrigin={{ horizontal: 'right', vertical: 'top' }}>
+                <MenuItem primaryText="Add Meal Item" leftIcon={<AddIcon />} onClick={this.openMealItemMaker} />
             </IconMenu>
         );
 
@@ -142,8 +148,8 @@ class MealPlanner extends Component {
     render() {
         const appBarMenuLeft = (
             <IconMenu iconButtonElement={<IconButton><NavigationMenuIcon color={white} /></IconButton>}>
-                <MenuItem primaryText="Nutrition Log" onClick={this.showNutritionLog} />
-                <MenuItem primaryText="Meal List" onClick={this.showMealList} />
+                <MenuItem primaryText="Nutrition Log" leftIcon={<ReaderIcon />} onClick={this.showNutritionLog} />
+                <MenuItem primaryText="Meal List" leftIcon={<RestaurantIcon />} onClick={this.showMealList} />
             </IconMenu>
         );
 
