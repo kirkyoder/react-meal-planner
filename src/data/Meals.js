@@ -31,19 +31,8 @@ meals
         }));
     });
 
-export function addMealItem() {
-    mealItems.push(new MealItemModel({
-        name: 'foo bar',
-        calories: 100,
-        protein: 50,
-        carbs: 3,
-        fat: 9
-    }));
-    console.log(mealItems);
-}
-
 export function getMealItems() {
     return mealItems;
 }
 
-export default { addMealItem, getMealItems };
+export default { getMealItems };

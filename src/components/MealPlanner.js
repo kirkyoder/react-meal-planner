@@ -18,18 +18,18 @@ class MealPlanner extends Component {
         super(props);
 
         this.state = {
-            availableMeals: props.meals,
+            availableMeals: props.meals || [],
             plannedMeals: [],
-            mealItemMakerOpen: false
+            mealItemMakerOpen: true
         }
 
         this.handleMealAdded = this.handleMealAdded.bind(this);
         this.handleMealRemoved = this.handleMealRemoved.bind(this);
 
         this.openMealItemMaker = this.openMealItemMaker.bind(this);
-        this.closeMealItemMaker = this.closeMealItemMaker.bind(this);
+        this.onMealItemMakerClosed = this.onMealItemMakerClosed.bind(this);
 
-        this.addMealItem = this.addMealItem.bind(this);
+        this._addMealItem = this._addMealItem.bind(this);
     }
 
     handleMealAdded(e, meal) {
@@ -48,35 +48,34 @@ class MealPlanner extends Component {
             plannedMeals: this.state.plannedMeals.filter(function(meal) {
                 return meal.id !== index;
             })
-        })
+        });
     }
 
-    addMealItem() {
+    _addMealItem(mealItem) {
         this.setState(function(prevState, props) {
             return {
-                availableMeals: prevState.availableMeals.concat(
-                    new MealItemModel({
-                        name: 'foo bar',
-                        calories: 100,
-                        protein: 50,
-                        carbs: 3,
-                        fat: 9
-                    })
-                )
+                availableMeals: prevState.availableMeals.concat(mealItem)
             }
         });
     }
 
     openMealItemMaker() {
-        this.setState({
-            mealItemMakerOpen: true
-        });
+        this.setState({ mealItemMakerOpen: true });
     }
 
-    closeMealItemMaker() {
-        this.setState({
-            mealItemMakerOpen: false
-        });
+    onMealItemMakerClosed(data) {
+        if (data) {
+            this._addMealItem(new MealItemModel({
+                name: data.name,
+                calories: data.calories,
+                protein: data.protein,
+                carbs: data.carbs,
+                fat: data.fat
+            }));
+        }
+
+        // close the meal item maker
+        this.setState({ mealItemMakerOpen: false });
     }
 
     render() {
@@ -85,8 +84,12 @@ class MealPlanner extends Component {
                 <RaisedButton
                     label="New Meal Item"
                     primary={true}
-                    onClick={this.addMealItem} />
-                <MealItemMaker open={this.state.mealItemMakerOpen} onClose={this.closeMealItemMaker} />
+                    onClick={this.openMealItemMaker} />
+
+                <MealItemMaker
+                    open={this.state.mealItemMakerOpen}
+                    onClose={this.onMealItemMakerClosed} />
+
                 <div className="meals-list-container">
                     <List>
                         <Subheader>Meals</Subheader>
