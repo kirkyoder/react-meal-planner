@@ -20,7 +20,7 @@ class MealPlanner extends Component {
         this.state = {
             availableMeals: props.meals || [],
             plannedMeals: [],
-            mealItemMakerOpen: true
+            mealItemMakerOpen: false
         }
 
         this.handleMealAdded = this.handleMealAdded.bind(this);
