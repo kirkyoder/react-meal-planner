@@ -22,6 +22,21 @@ class MealItemMaker extends Component {
         }
     }
 
+    onKeyDown = (e) => {
+        const escKeyCode = 27;
+        if (e.keyCode === escKeyCode) {
+            this.handleCancel();
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('keydown', this.onKeyDown, false);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.onKeyDown, false);
+    }
+
     handleCancel = () => {
         this.props.onClose();
         this.setState({ errors: {} });
