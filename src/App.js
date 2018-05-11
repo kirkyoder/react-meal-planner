@@ -11,7 +11,6 @@ class App extends Component {
         return (
             <MuiThemeProvider>
                 <div className="App">
-                    <h1>Meal Planner</h1>
                     <MealPlanner meals={MealDatabase.getMealItems()} />
                 </div>
             </MuiThemeProvider>

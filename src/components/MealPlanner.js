@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
-import '../styles/meal-planner.css';
-
-import { Subheader, List } from 'material-ui';
-import RaisedButton from 'material-ui/RaisedButton';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import List from 'material-ui/List';
+import MenuItem from 'material-ui/MenuItem';
+import NavigationMenuIcon from 'material-ui/svg-icons/navigation/menu';
+import NavigationMoreIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Subheader from 'material-ui/Subheader';
+import { white } from 'material-ui/styles/colors';
 
 import MealItemEnumerator from './MealItemEnumerator';
 import MealItemModel from '../models/MealItemModel';
@@ -20,7 +25,8 @@ class MealPlanner extends Component {
         this.state = {
             availableMeals: props.meals || [],
             plannedMeals: [],
-            mealItemMakerOpen: false
+            mealItemMakerOpen: false,
+            visiblePane: 0
         }
 
         this.handleMealAdded = this.handleMealAdded.bind(this);
@@ -78,14 +84,27 @@ class MealPlanner extends Component {
         this.setState({ mealItemMakerOpen: false });
     }
 
-    render() {
-        return (
-            <div className="outer-container">
-                <RaisedButton
-                    label="New Meal Item"
-                    primary={true}
-                    onClick={this.openMealItemMaker} />
+    showNutritionLog = () => {
+        this.setState({ visiblePane: 0 })
+    }
 
+    showMealList = () => {
+        this.setState({ visiblePane: 1 })
+    }
+
+    getNutritionLogPane() {
+        const pane = (
+            <div className="nutrition-log-container">
+                <NutritionLog mealItems={this.state.plannedMeals} onClick={this.handleMealRemoved} />
+            </div>
+        );
+
+        return { pane: pane }
+    }
+
+    getMealListPane() {
+        const pane = (
+            <div>
                 <MealItemMaker
                     open={this.state.mealItemMakerOpen}
                     onClose={this.onMealItemMakerClosed} />
@@ -98,10 +117,46 @@ class MealPlanner extends Component {
                             onItemClicked={this.handleMealAdded} />
                     </List>
                 </div>
+            </div>
+        );
 
-                <div className="nutrition-log-container">
-                    <NutritionLog mealItems={this.state.plannedMeals} onClick={this.handleMealRemoved} />
-                </div>
+        const menu = (
+            <IconMenu iconButtonElement={<IconButton><NavigationMoreIcon color={white} /></IconButton>}>
+                <MenuItem primaryText="Add Meal Item" onClick={this.openMealItemMaker} />
+            </IconMenu>
+        );
+
+        return { pane: pane, appMenuRight: menu };
+    }
+
+    getVisiblePane() {
+        switch (this.state.visiblePane) {
+            case 1:
+                return this.getMealListPane();
+            case 0:
+            default:
+                return this.getNutritionLogPane();
+        }
+    }
+
+    render() {
+        const appBarMenuLeft = (
+            <IconMenu iconButtonElement={<IconButton><NavigationMenuIcon color={white} /></IconButton>}>
+                <MenuItem primaryText="Nutrition Log" onClick={this.showNutritionLog} />
+                <MenuItem primaryText="Meal List" onClick={this.showMealList} />
+            </IconMenu>
+        );
+
+        const visiblePane = this.getVisiblePane()
+
+        return (
+            <div className="outer-container">
+                <AppBar
+                    title="Meal Planner"
+                    iconElementLeft={appBarMenuLeft}
+                    iconElementRight={visiblePane.appMenuRight} />
+
+                {visiblePane.pane}
             </div>
         );
     }
