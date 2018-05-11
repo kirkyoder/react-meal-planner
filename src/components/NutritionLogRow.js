@@ -38,7 +38,7 @@ class NutritionLogRow extends Component {
 
         return (
             <TableRow {...passedOnProps} mealid={mealid} onRowClick={this.onLogRowClick} style={rowStyle}>
-                <TableRowColumn style={{ width: '40%' }}>{name}</TableRowColumn>
+                <TableRowColumn style={{ width: '30%' }}>{name}</TableRowColumn>
                 <TableRowColumn>
                     <DisplayNumber number={calories} />
                 </TableRowColumn>

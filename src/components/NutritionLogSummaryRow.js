@@ -37,7 +37,7 @@ class NutritionLogSummaryRow extends Component {
 
         return (
             <TableRow style={{ backgroundColor: '#eee', fontWeight: 'bold' }}>
-                <TableRowColumn style={{ width: '40%' }}></TableRowColumn>
+                <TableRowColumn style={{ width: '30%' }}></TableRowColumn>
                 <TableRowColumn>
                     <DisplayNumber number={summaries.calories} />
                 </TableRowColumn>
